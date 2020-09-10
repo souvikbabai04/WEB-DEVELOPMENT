@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>\
+	<script>
+	var app=angular.module("myApp",[])
+	
+	app.controller("myController",function($scope){
+		$scope.check=function(num)
+		{
+			$scope.status=num%5==0?false:true;
+			$scope.key=num.$valid
+		}
+	})
+	</script>
+<title>Hello</title>
+</head>
+<body ng-app="myApp" ng-controller="myController" ng-init="num=0">
+	WELCOME {{10+10}}<br><br>
+	Enter the Number:<input type="text" ng-model="num" ng-keyup="check(num)"><br>
+	Is Number::{{key}}	
+	<div ng-hide="status">
+		<h2> Number is div by 5</h2>
+	</div>
+	<div ng-show="status">
+		<h2> Number is not div by 5</h2>
+	</div>
+</body>
+</html>

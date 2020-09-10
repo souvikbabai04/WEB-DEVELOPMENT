@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<style>
+	form.centerForm {
+		display: block;
+		margin-top: 0em;
+	}
+
+	table.center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	table,
+	th,
+	td {
+		border: 2px solid blue;
+		border-collapse: collapse;
+	}
+</style>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script>
+		var app = angular.module("/myApp", [])
+		app.controller("/myController",function verify(){
+			
+	})
+		app.controller("/mydisplay", function ($scope, $http) {
+			$http.get("http://localhost:3000/display").then(function (sucess) {
+				//if (sucess.data.length > 0)
+				$scope.employee = sucess.data
+			})
+		})
+		app.controller("/alertController", function ($scope, $window) {
+			$scope.DisplayAlert = function () {
+				$window.alert("Enter the OTP")
+			}
+		})
+	</script>
+	<title>WELCOME</title>
+</head>
+
+<body ng-app="/myApp" style="background-color: powderblue;text-align: center;font-size:medium">
+	<solid>
+		<div
+			style="color: red;text-align: center;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+			<h1>ADD CUSTOMER DETAILS {{data}}</h1>
+		</div>
+	</solid>
+	<form action="/add" class="centerForm" method="post">
+		<h3 style="color: blueviolet;"><i>WELCOME</i></h3>
+		<h2>{{"Souvik"+" "+"Babai"}}</h2><br> <br>
+		FNAME:<input type="text" name="fname" ng-model="fname" required>{{fname}}<br>
+		LNAME:<input type="text" name="lname" ng-model="lname" required>{{lname}}<br>
+		SEX:{{sex}}<br>
+		MALE::<input type="radio" name="sex" value="MALE" ng-model="sex" required><br>
+		FEMALE::<input type="radio" name="sex" value="FEMALE" ng-model="sex" required><br>
+		ADDRESS:<input type="text" name="address" ng-model="address" required>{{address}}<br>
+		PHONE NUMBER:<input type="text" name="pnum" ng-model="pnum" required>{{pnum}}<br>
+
+		EMAIL:<input type="text" name="email" ng-model="email" size="40" required>{{email}}
+		<div ng-controller="myController">
+			<input type="button" name="verify" value="VERIFY" ng-click="verify()"><br>
+		</div>
+		CODE:<input type="text" name="code" required><br>
+		<input type="submit" value="Submit"><br>
+
+	</form>
+	<h4 style="text-align: center; font-size: larger;color:black">
+		<solid>DISPLAY USERS</solid>
+	</h4>
+
+	<form action="/display" method="GET">
+		<input type="submit" value="Display">
+		<div ng-controller="/mydisplay">
+			<table class="center" border="5" style="width: 1000px; text-align: center;size: 200%;color: green;">
+				<thead>
+					<tr>
+						<td>First Name</td>
+						<td>Last Name</td>
+						<td>SEX</td>
+						<td>Email-ID</td>
+						<td>Address</td>
+						<td>Phone Number</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="emp in employee">
+						<td>{{emp.fname}}</td>
+						<td>{{emp.lname}}</td>
+						<td>{{emp.sex}}</td>
+						<td>{{emp.email}}</td>
+						<td>{{emp.Address}}</td>
+						<td>{{emp.PhoneNumber}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- <a href="#!java">Java</a>
+	<br>
+	<br>
+	<a href="#!c">C</a>
+	<br>
+	<br>
+	 -->
+		<div ng-view></div>
+</body>
+
+</html>

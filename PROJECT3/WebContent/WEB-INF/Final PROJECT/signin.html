@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<style>
+	form {
+		border: 5px solid #f1f1f1;
+		background-color: initial;
+		border-color: powderblue;
+		border-collapse: collapse;
+		text-transform: uppercase;
+		text-align: justify;
+	}
+
+	/* Full-width inputs */
+	input[type=text],
+	input[type=email],
+	input[type=password] {
+		width: 50%;
+		padding: 8px 10px;
+		margin: 5px 0;
+		border: 2px solid #ccc;
+	}
+
+	/* Set a style for all buttons */
+	input[type=submit] {
+		background-color:burlywood;
+		color: white;
+		padding: 5px 8px;
+		border: none;
+		cursor: pointer;
+	}
+	input[type=submit]:hover {
+		color: blue;
+		background-color: green;
+	}
+
+	input[type=text]:hover {
+		color: red;
+	}
+</style>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+	<title>SIGN IN</title>
+</head>
+
+<body ng-app="" style="background-color:powderblue;color:brown;">
+	<h1 style="text-align: center;color: blue;">
+		<solid>WELCOME</solid>
+	</h1>
+	<form name="myForm" action="/signupForm" method="POST" style="text-align: justify;">
+		First Name:   <input type="text" name="fname" size="40" required><br>
+		Last Name:   <input type="text" name="lname" size="40" required><br>
+		USER Name:   <input type="text" name="username" size="40" required><br>
+		PASSWORD:    <input type="password" name="password" size="40" required><br>
+		Email-ID   <input type="email" name="email" ng-model="email" size="40" required><br>
+		Enter the OTP:   <input type="text" name="code" size="10"><br>
+		<div style="text-align: center;">
+			<input type="submit" name="submit">
+		</div>
+	</form>
+	<form action="/verify" method="POST">
+		Email-ID<input type="email" name="email" ng-model="email" required><br>
+		<input type="submit" name="submit" value="Verify" ng-model="{{email}}">
+	</form>
+</body>
+
+</html>

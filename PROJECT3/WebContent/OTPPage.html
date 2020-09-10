@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="./OTPNODEJS.js"></script>
+	<script type="text/javascript">
+		window.history.forward();
+        function noBack() {
+				window.history.forward(); 
+        } 
+	</script>
+	<title>OTP</title>
+</head>
+
+<body>
+	<h1>
+		<solid>ONE TIME PASSWORD</solid>
+	</h1>
+	<form action="/getOTP" method="POST">
+		EMAIL:<input type="email" name="email" size="40" required>
+		<input type="submit">
+	</form>
+	<br><br><br>
+	<h1>
+		<solid>ONE TIME PASSWORD VALUE</solid>
+	</h1>
+	<form action="/getOTPkey" method="POST">
+		OTP CODE:<input type="text" name="code" size="4" required>
+		<input type="submit">
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table.center {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid blue;
+			border-collapse: collapse;
+		}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+	<script src="./NODEJS1.js"></script>
+	<script>
+		var app=angular.module("myApp",[])
+
+		app.controller("myController",function($scope,$http){
+			$http.get("http://localhost:3000/display").then(function(success){
+			if(success.data.length>0)
+			{
+				$scope.employee=success.data
+			}	
+			})
+		})
+	</script>
+	<title>view</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+	<h1>WELCOME {{10+40}}</h1>
+	<form action="/display">
+	<input type="submit">
+	</form>
+<table>
+	<thead>
+		<tr>
+			<td>FIRST NAME</td>
+			<td>LAST NAME</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="emp in employee">
+			<td>{{emp.fname}}</td>
+			<td>{{emp.lname}}</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+
+</html>

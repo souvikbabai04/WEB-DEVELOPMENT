@@ -1,0 +1,102 @@
+<html>
+<style>
+	body{
+		background-color: navy;
+	}
+	input.ng-valid {
+		background-color: palevioletred;
+	}
+
+	input.ng-invalid {
+		background-color: aqua;
+	}
+
+	form {
+		border: 10px solid #f1f1f1;
+		border-color: brown;
+		width: 50%;
+		background-color: bisque
+	}
+
+	/* Full-width inputs */
+	input[type=text],
+	input[type=password] {
+		width: 50%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 5px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	/* Set a style for all buttons */
+	button,input[type=submit]{
+		background-color: #4CAF50;
+		color: blue;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 20%;
+	}
+	button:hover{
+		color:red
+	}
+	
+	input[type=submit]:hover{
+		color:red
+	}
+</style>
+
+<head>
+	<title>WELCOME PAGE</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+	<script>
+		var app = angular.module("myApp", [])
+
+
+		/* app.controller("/ErrorPage", function ($scope, $http) {
+			$http.post("http://localhost:3000/submitForm").then(function (sucess) {
+				$scope.errorMessage ="Sucess"
+			},function(error){
+				$scope.errorMessage="Error"
+			})
+		}) */
+	</script>
+</head>
+<h2>
+	<solid>USER LOGIN FORM</solid>
+</h2>
+
+<body ng-app="myApp"
+	style="size: 100px;color:violet; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+	<form name="myForm" action="/submitForm" method="POST">
+		<h1 style="text-align: center;">WECLOME {{username}}</h1><br>
+
+		USER NAME:<input type="text" size="20" name="username" placeholder="Enter the USER-NAME" ng-model="username"
+			required>
+		<span style="color: red;font-size: 10px; text-align: right;">*This Field is
+			{{myForm.username.$valid}}</span><br>
+
+		PASSWORD:<input type="password" size="20" name="password" placeholder="Enter the PASSWORD" ng-model="email"
+			required>
+		<span style="color: red;font-size: 10px;text-align: center;">*This Field is
+			{{myForm.password.$valid}}</span><br>
+		<br>
+		<div style="text-align: center;">
+			<input type="submit" value="submit" name="submit">
+		</div>
+
+	</form>
+<!-- 
+	<div ng-controller="/ErrorPage">
+		{{errorMessage}}
+	</div> -->
+	<a href="/signin" style="text-align: right;">
+		<button>SIGN IN</button>
+	</a>
+</body>
+
+</html>
